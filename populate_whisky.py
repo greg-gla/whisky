@@ -38,7 +38,7 @@ def populate():
         for whisky in distillery_data['whiskies']:
             add_whisky(whisky['id'],whisky['name'],whisky['age'],whisky['abv'],whisky['description'],dist)
 
-    debug
+    #debug
     for dist in Distillery.objects.all():
         for whisky in Whisky.objects.filter(distillery=dist):
             print(f'- {dist}: {whisky}')
