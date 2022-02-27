@@ -18,14 +18,14 @@ class User(models.Model):
 class Distillery(models.Model):
     NAME_MAX_LENGTH = 128
     LOCATION_MAX_LENGTH = 512
-    DESCRIPTION_MAX_LENGTH = 512
+    DESCRIPTION_MAX_LENGTH = 1024
 
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=NAME_MAX_LENGTH)
-    logo = models.ImageField(blank=True)
+    logo = models.ImageField(upload_to='logo_images',blank=True)
     location = models.CharField(max_length=LOCATION_MAX_LENGTH)
     description = models.CharField(max_length=DESCRIPTION_MAX_LENGTH)
-
+    
     class Meta:
         verbose_name_plural = 'Distilleries'
 
@@ -42,7 +42,7 @@ class Whisky(models.Model):
     age = models.IntegerField(default=0)
     abv = models.IntegerField(default=0)
     description = models.CharField(max_length=DESCRIPTION_MAX_LENGTH)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='whiskey_images',blank=True)
     distillery = models.ForeignKey(Distillery,on_delete=models.CASCADE)
 
     class Meta:
