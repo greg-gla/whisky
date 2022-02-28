@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from pages import views
+from django.conf import settings
+from django.conf.urls.static import static
 
-from pages.views import(
-	IndexView,
+from pages.views import (
+    IndexView,
 )
 
 urlpatterns = [
-	path('', IndexView.as_view(), name='home'),
-    path('admin/', admin.site.urls),
-]
+                  path('', IndexView.as_view(), name='home'),
+                  path('whisky/', include('pages.urls')),
+                  path('admin/', admin.site.urls),
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
