@@ -9,9 +9,14 @@ step2. create your own superuser
 ```
 python manage.py createsuperuser
 ```
+
+step3 migrate the database again
+```
+python manage.py migrate
+```
 the database will generate automatically
 
-step3. run *populate_whisky.py* will insert some testing data into the database
+step4. run *populate_whisky.py* will insert some testing data into the database
 
 ```
 python populate_whisky.py   
