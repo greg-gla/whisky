@@ -5,3 +5,7 @@ from django.views.generic import View
 class IndexView(View):
 	def get(self, request, **kwargs):
 		return render(request, 'pages/index.html')
+
+class ReviewView(View):
+	def get(self, request, **kwargs):
+		return render(request, 'pages/review.html')

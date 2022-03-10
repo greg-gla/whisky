@@ -18,9 +18,11 @@ from django.urls import path
 
 from pages.views import(
 	IndexView,
+    ReviewView
 )
 
 urlpatterns = [
 	path('', IndexView.as_view(), name='home'),
     path('admin/', admin.site.urls),
+    path('review/', ReviewView.as_view(), name='Review'),
 ]

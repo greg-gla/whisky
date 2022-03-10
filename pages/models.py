@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# super user: admin ; password: 123
 class User(models.Model):
     NICK_NAME_MAX_LENGTH = 128
     PASSWORD_MAX_LENGTH = 32
