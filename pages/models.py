@@ -10,7 +10,7 @@ class User(models.Model):
     nickname = models.CharField(max_length=NICK_NAME_MAX_LENGTH)
     email = models.EmailField()
     password = models.CharField(max_length=PASSWORD_MAX_LENGTH)
-    last_login = models.DateTimeField()
+    last_login = models.DateTimeField(auto_now=True)
 
     def __str__(self) :
         return self.nickname
