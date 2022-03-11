@@ -17,14 +17,12 @@ from pages.forms import RegisterForm
 
 
 class IndexView(View):
-	def get(self, request, **kwargs):
-		return render(request, 'pages/index.html')
+    def get(self, request, **kwargs):
+        return render(request, 'pages/index.html')
 
 
 def about(request):
-	return render(request, 'pages/about.html')
-    def get(self, request, **kwargs):
-        return render(request, 'pages/index.html')
+    return render(request, 'pages/about.html')
 
 
 def regist(request):
