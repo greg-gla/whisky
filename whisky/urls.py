@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from pages import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from pages.views import(
     IndexView,
@@ -22,7 +26,15 @@ from pages.views import(
 )
 
 urlpatterns = [
+<<<<<<< HEAD
     path('', IndexView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('ChoosingDistillery/', ChoosingDistillery.as_view(), name='ChoosingDistillery'),
 ]
+=======
+                  path('', IndexView.as_view(), name='home'),
+                  path('whisky/', include('pages.urls')),
+				  path('about/', views.about, name='about'),
+                  path('admin/', admin.site.urls),
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+>>>>>>> 6bb36b44342b26eca9ab5972ca2a9ed2e8744a26
