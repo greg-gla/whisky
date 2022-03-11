@@ -15,16 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from pages import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from pages.views import(
 	IndexView,
     ReviewView,
     WhiskyList,
+    ChoosingDistillery,
+    regist,
+    user_login,
 )
 
 urlpatterns = [
-	path('', IndexView.as_view(), name='home'),
-    path('admin/', admin.site.urls),
+    path('', IndexView.as_view(), name='home'),
+    path('login/', user_login, name='login'),
+    path('register/', regist, name='register'),
     path('whisky_list/<int:pk>/', WhiskyList.as_view(), name='whisky_list'),
     path('review/<int:pk>/', ReviewView.as_view(), name='Review'),
-]
+    path('ChoosingDistillery/', ChoosingDistillery.as_view(), name='ChoosingDistillery'),
+	path('about/', views.about, name='about'),
+    path('admin/', admin.site.urls),] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

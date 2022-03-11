@@ -10,7 +10,7 @@
           <a class='nav-link' href="{% url 'home' %}">Home</a>
         </li>
         <li class='nav-item'>
-          <a class='nav-link' href="#">About</a>
+          <a class='nav-link' href="{% url 'about' %}">About</a>
         </li>
       </ul>
       <div class='ml-auto'>
@@ -24,8 +24,8 @@
                 <a class='dropdown-item' href='#'><i class='icon-power'></i> Logout</a>
               </div>
         {% else %}
-        <a class='btn btn-dark border' href='#'>Sign In</a>
-        <a class='btn btn-info' href='#'>Sign Up</a>
+        <a class='btn btn-dark border' href='{% url "login" %}'>Sign In</a>
+        <a class='btn btn-info' href='{% url "register" %}'>Sign Up</a>
         {% endif %}      
       </div> 
 </nav>
