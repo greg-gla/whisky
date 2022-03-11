@@ -21,20 +21,21 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from pages.views import(
-    IndexView,
+	IndexView,
+    ReviewView,
+    WhiskyList,
     ChoosingDistillery,
+    regist,
+    user_login,
 )
 
 urlpatterns = [
-<<<<<<< HEAD
     path('', IndexView.as_view(), name='home'),
-    path('admin/', admin.site.urls),
+    path('login/', user_login, name='login'),
+    path('register/', regist, name='register'),
+    path('whisky_list/<int:pk>/', WhiskyList.as_view(), name='whisky_list'),
+    path('review/<int:pk>/', ReviewView.as_view(), name='Review'),
     path('ChoosingDistillery/', ChoosingDistillery.as_view(), name='ChoosingDistillery'),
-]
-=======
-                  path('', IndexView.as_view(), name='home'),
-                  path('whisky/', include('pages.urls')),
-				  path('about/', views.about, name='about'),
-                  path('admin/', admin.site.urls),
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> 6bb36b44342b26eca9ab5972ca2a9ed2e8744a26
+	path('about/', views.about, name='about'),
+    path('admin/', admin.site.urls),] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

@@ -1,3 +1,7 @@
+from django.shortcuts import render
+from django.views.generic import View, ListView
+from django.shortcuts import get_object_or_404
+from pages.models import Whisky, Rating, Distillery
 import tkinter.messagebox
 import time
 from random import random
@@ -17,18 +21,43 @@ from pages.forms import RegisterForm
 
 
 class IndexView(View):
-<<<<<<< HEAD
 	def get(self, request, **kwargs):
-		return render(request, 'pages/index.html')
+		context = {}
+		context['distilleries'] = Distillery.objects.all()
+
+		return render(request, 'pages/index.html', context)		
+
+class ReviewView(View):
+	def get(self, request, **kwargs):
+		context = {}
+		instance = get_object_or_404(Whisky, pk=kwargs.get('pk'))
+
+		context['whisky'] = instance
+		context['ratings'] = Rating.objects.filter(whisky_id=instance.pk)
+
+		return render(request, 'pages/review.html', context)
+
+class WhiskyList(ListView):
+	template_name = 'templates/whisky_list.html'
+	paginate_by = 10
+
+	def get_queryset(self, *args, **kwargs):
+		instance = 	get_object_or_404(Distillery, pk=self.kwargs.get('pk'))
+
+		return Whisky.objects.filter(distillery=instance.pk)
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(**kwargs)
+		instance = get_object_or_404(Distillery, pk=self.kwargs.get('pk'))
+
+		context['distillery'] = instance
+
+		return context		
+		
 
 class ChoosingDistillery(View):
 	def get(self, request, **kwargs):
 		return render(request,'pages/ChoosingDistillery.html')
-
-
-=======
-    def get(self, request, **kwargs):
-        return render(request, 'pages/index.html')
 
 
 def about(request):
@@ -61,7 +90,7 @@ def regist(request):
             new_user.email = email
             new_user.password = password1
             new_user.save()
-            return HttpResponseRedirect('/whisky/login/')
+            return HttpResponseRedirect('login/')
 
 
 def user_login(request):
@@ -74,11 +103,12 @@ def user_login(request):
         if models.User.objects.filter(email=email).exists():
             user = models.User.objects.get(email=email)
             if check_password(password, user.password):
-                return render(request, 'pages/index.html')
+                login(request, user)
+                return HttpResponseRedirect('/')
             else:
                 tkinter.messagebox.showinfo('Hint', 'Incorrect password')
                 return render(request, 'pages/login.html')
         else:
             tkinter.messagebox.showinfo('Hint', 'The email address does not exist')
             return render(request, 'pages/login.html')
->>>>>>> 6bb36b44342b26eca9ab5972ca2a9ed2e8744a26
+

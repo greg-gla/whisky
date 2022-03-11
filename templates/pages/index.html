@@ -1,7 +1,26 @@
 {% extends 'common/base.html' %}
-{% block title %} UXInventory - Home {% endblock %}
+{% block title %} Whisky.com - Home {% endblock %}
 {% block content %}
-<h1>Index Page</h1>
-            <li><a href="{% url 'whisky:register' %}">Sign Up</a></li>
-            <li><a href="{% url 'whisky:login' %}">Login</a></li>
+{% include 'common/nav.html' %}
+<style>
+	body {
+		background: rgb(87, 96, 106);
+	}
+
+	.tile {
+		background-color: #626b7a;
+		text-align: center;
+	}
+</style>
+<div class='row ml-4 mr-4' style="margin-top: 90px;">
+	{% for distillery in distilleries %}
+	<div class='col-lg-3 col-md-6 col-sm-12'>
+		<div class='tile p-3 mt-3 shadow'>
+			<img src="{{distillery.logo}}" width="100px" height="100px">
+			<h5 class='pt-1'>{{distillery.name}}</h5>
+			<a class='btn btn-secondary' href='{% url "whisky_list" pk=distillery.pk %}'>View Products</a>	
+		</div>	
+	</div>
+	{% endfor %}			
+</div>	
 {% endblock %}

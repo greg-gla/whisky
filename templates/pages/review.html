@@ -1,0 +1,102 @@
+{% extends 'common/base.html' %}
+{% block title %} Whisky.com - {{whisky.name}} {% endblock %}
+{% block content %}
+
+<style>
+#content{height:auto;}
+#content p { font-size:16px; text-indent:2em; line-height:18px;text-align:justify; margin:10px 5px 5px;}
+#content img { float:left; display:block;}
+</style>
+
+<h1>Review Page</h1>
+
+<div id="content">
+    <section>
+        <h2>{{whisky.name}}</h2>
+		<p><img src="" width="400" heigth="550">
+        <p>this is description zone</p>
+		<p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </section>
+</div>
+
+<link href="../../static/css/commentStyle.css" rel="stylesheet" />
+
+<div class="comments">
+    <div class="comment-wrap">
+        <div class="photo">
+            <div class="avatar" style="background-image: url('')"></div>
+        </div>
+        <div class="comment-block">
+            <form action="">
+                <textarea name="" id="" cols="30" rows="3" placeholder="Say somthing..."></textarea>
+            </form>
+        </div>
+    </div>
+
+    <div class="comment-wrap">
+        <div class="photo">
+            <div class="avatar" style="background-image: url('')"></div>
+        </div>
+        <div class="comment-block">
+            <p class="comment-text">databases comments can be add here</p>
+            <div class="bottom-comment">
+                <div class="comment-date">23.5 2014</div>
+                <ul class="comment-actions">
+                    <li class="complain">Complain</li>
+                    <li class="reply">Reply</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="comment-wrap">
+        <div class="photo">
+            <div class="avatar" style="background-image: url('')"></div>
+        </div>
+        <div class="comment-block">
+            <p class="comment-text">databases comments can be add here</p>
+            <div class="bottom-comment">
+                <div class="comment-date">22.2 2014</div>
+                <ul class="comment-actions">
+                    <li class="complain">Complain</li>
+                    <li class="reply">Reply</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% for rating in ratings %}
+    <div class="comment-wrap">
+        <div class="photo">
+            <div class="avatar" style="background-image: url('')"></div>
+        </div>
+        <div class="comment-block">
+            <p class="comment-text">{{rating.verbal_rating}}</p>
+            <div class="bottom-comment">
+                <div class="comment-date">22.2 2014</div>
+                <ul class="comment-actions">
+                    <li class="complain">Complain</li>
+                    <li class="reply">Reply</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- {% endblock %} -->
