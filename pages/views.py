@@ -5,3 +5,9 @@ from django.views.generic import View
 class IndexView(View):
 	def get(self, request, **kwargs):
 		return render(request, 'pages/index.html')
+
+class ChoosingDistillery(View):
+	def get(self, request, **kwargs):
+		return render(request,'pages/ChoosingDistillery.html')
+
+
