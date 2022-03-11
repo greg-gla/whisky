@@ -6,5 +6,21 @@
 	body {
 		background: rgb(87, 96, 106);
 	}
-</style>	
+
+	.tile {
+		background-color: #626b7a;
+		text-align: center;
+	}
+</style>
+<div class='row ml-4 mr-4' style="margin-top: 90px;">
+	{% for distillery in distilleries %}
+	<div class='col-lg-3 col-md-6 col-sm-12'>
+		<div class='tile p-3 mt-3 shadow'>
+			<img src="{{distillery.logo}}" width="100px" height="100px">
+			<h5 class='pt-1'>{{distillery.name}}</h5>
+			<a class='btn btn-secondary' href='{% url "whisky_list" pk=distillery.pk %}'>View Products</a>	
+		</div>	
+	</div>
+	{% endfor %}			
+</div>	
 {% endblock %}

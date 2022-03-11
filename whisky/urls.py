@@ -18,9 +18,13 @@ from django.urls import path
 
 from pages.views import(
 	IndexView,
+    ReviewView,
+    WhiskyList,
 )
 
 urlpatterns = [
 	path('', IndexView.as_view(), name='home'),
     path('admin/', admin.site.urls),
+    path('whisky_list/<int:pk>/', WhiskyList.as_view(), name='whisky_list'),
+    path('review/<int:pk>/', ReviewView.as_view(), name='Review'),
 ]
