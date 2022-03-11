@@ -8,6 +8,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -16,6 +17,12 @@ from pages.forms import RegisterForm
 
 
 class IndexView(View):
+	def get(self, request, **kwargs):
+		return render(request, 'pages/index.html')
+
+
+def about(request):
+	return render(request, 'pages/about.html')
     def get(self, request, **kwargs):
         return render(request, 'pages/index.html')
 
@@ -24,7 +31,6 @@ def regist(request):
     if request.method == 'GET':
         return render(request, 'pages/registration.html')
     if request.method == 'POST':
-        # 注册
         name = request.POST.get('name')
         email = request.POST.get('email')
         password1 = request.POST.get('password')
@@ -67,8 +73,3 @@ def user_login(request):
         else:
             tkinter.messagebox.showinfo('Hint', 'The email address does not exist')
             return render(request, 'pages/login.html')
-
-# @login_required
-# def user_logout(request):
-#     logout(request)
-#     return redirect(reverse('rango:index'))
