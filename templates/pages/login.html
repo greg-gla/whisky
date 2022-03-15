@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends 'common/base.html' %}
+{% block title %} Whisky.com - Login {% endblock %}
+{% block content %}
+{% include 'common/nav.html' %}
 
 <head>
     <meta charset="utf-8">
@@ -11,11 +13,11 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
-<body>
+<body class="login-body">
 <div class="login-card"><img class="profile-img-card" src="/static/img/avatar_2x.png ">
     <p class="profile-name-card"></p>
     <form class="form-signin" action="" method="POST">{% csrf_token %}<span class="reauth-email"> </span><input
-            class="form-control" type="email" id="inputEmail" name="email" required="" placeholder="Email address"
+            class="form-control" type="text" id="inputEmail" name="username" required=""
             autofocus=""><input class="form-control" type="password" id="inputPassword" required="" name="password"
                                 placeholder="Password">
         <div
@@ -30,4 +32,4 @@
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
-</html>
+{% endblock %}

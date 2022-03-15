@@ -20,22 +20,25 @@ from pages import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from pages.views import(
-	IndexView,
+from pages.views import (
+    IndexView,
     ReviewView,
     WhiskyList,
     ChoosingDistillery,
     regist,
     user_login,
+    logout,
+    change_password
 )
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='home'),
-    path('login/', user_login, name='login'),
-    path('register/', regist, name='register'),
-    path('whisky_list/<int:pk>/', WhiskyList.as_view(), name='whisky_list'),
-    path('review/<int:pk>/', ReviewView.as_view(), name='Review'),
-    path('ChoosingDistillery/', ChoosingDistillery.as_view(), name='ChoosingDistillery'),
-	path('about/', views.about, name='about'),
-    path('admin/', admin.site.urls),] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+                  path('', IndexView.as_view(), name='home'),
+                  path('login/', user_login, name='login'),
+                  path('register/', regist, name='register'),
+                  path('logout/', logout, name='logout'),
+                  path('change_password/', change_password, name='change_password'),
+                  path('whisky_list/<int:pk>/', WhiskyList.as_view(), name='whisky_list'),
+                  path('review/<int:pk>/', ReviewView.as_view(), name='Review'),
+                  path('ChoosingDistillery/', ChoosingDistillery.as_view(), name='ChoosingDistillery'),
+                  path('about/', views.about, name='about'),
+                  path('admin/', admin.site.urls), ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
